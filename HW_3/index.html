@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+</head>
+<body>
+    <p>Форма для задачі 9</p>
+<form>
+  Введіть висоту цегли <input type="text" id="height"><br>
+  Введіть ширіну цегли: <input type="text" id="width"><br>
+  Введіть глибину цегли: <input type="text" id="depth"><br>
+  <hr>
+  Введіть висоту отвіру <input type="text" id="heightHole"><br>
+  Введіть ширіну отвіру: <input type="text" id="widthHole"><br>
+  <input type="submit" value="Submit">
+</form>
+<hr>
+<p>Values - <div id="values"></div> </p>
+<hr>
+
+
+<script>
+    //Задача 9
+    // let a = document.getElementById('height').value;
+    // let b = document.getElementById('width').value;
+    // let c= document.getElementById('depth').value;
+    // let h= document.getElementById('heightHole').value;
+    // let w= document.getElementById('widthHole').value;
+
+    function doesBrickFit (a,b,c,h,w){
+        document.getElementById("values").innerHTML = a;
+    }
+    doesBrickFit(document.querySelectorAll('#height').value, document.querySelectorAll('#width').value,document.querySelectorAll('#depth').value, 
+    document.querySelectorAll('#heightHole').value,document.querySelectorAll('#widthHole').value);
+
+   
+    
+</script>
+
+</body>
+</html>
