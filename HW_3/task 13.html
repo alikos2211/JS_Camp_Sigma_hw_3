@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 13</title>
+</head>
+<body>
+
+    <div class="str"></div> 
+    <div class="newStr"></div> 
+
+<script>
+    let str =  "Hello World! This is a Test email@example.com https://example.com 12345 67890";
+
+    function processString(str) {
+
+        document.querySelector('.str').innerHTML = str;
+        let words = str.split(" ");
+        words[0] = words[0][0].toUpperCase() + words[0].substr(1);
+    
+            words = words.map((word) => {
+            if (word.includes("http") || word.includes("https")) {
+            return "[посилання заборонено]";
+            } else if (word.includes("@")) {
+            return "[контакти заборонені]";
+            } else if (word.length > 3 && /^\d+$/.test(word)) {
+            return "";
+            } else {
+            return word.toLowerCase();
+            }
+        });
+
+        
+        let result = words.join(" ");
+        if (result.length > str.length) {
+            setTimeout(() => {
+            confirm("Чи потрібна Вам допомога?")
+            }, 5000);
+        }
+
+    return document.querySelector('.newStr').innerHTML = result;
+
+}
+
+processString(str);
+    </script>
+    
+</body>
+</html>

@@ -5,38 +5,93 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasks</title>
+    <script>
+        document.ondragstart = test;
+        document.onselectstart = test;
+        document.oncontextmenu = test;
+        function test() {
+        return false
+        }
+    </script>
 </head>
 <body>
+    <!-- Задача 9 -->
     <p>Форма для задачі 9</p>
-<form>
-  Введіть висоту цегли <input type="text" id="height"><br>
-  Введіть ширіну цегли: <input type="text" id="width"><br>
-  Введіть глибину цегли: <input type="text" id="depth"><br>
+<form id="form9">
+  Введіть висоту цегли <input type="text" id="height" value="" name="height"><br>
+  Введіть ширіну цегли: <input type="text" id="width" value=""  name="width"><br>
+  Введіть глибину цегли: <input type="text" id="depth" value="" name="depth"><br>
   <hr>
-  Введіть висоту отвіру <input type="text" id="heightHole"><br>
-  Введіть ширіну отвіру: <input type="text" id="widthHole"><br>
-  <input type="submit" value="Submit">
+  Введіть висоту отвіру <input type="text" id="heightHole" value="" name="heightHole"><br>
+  Введіть ширіну отвіру: <input type="text" id="widthHole" value="" name="widthHole"><br>
+  <input type="submit" value="Submit" id="btn9">
 </form>
 <hr>
-<p>Values - <div id="values"></div> </p>
+<p>Values : </p> 
+<div class="valueA" ></div> 
+<div class="valueB" ></div> 
+<div class="valueC" ></div> 
+<div class="valueH" ></div> 
+<div class="valueW" ></div> 
+<div class="result"> </div>
 <hr>
 
+<!-- Задача 14 -->
+
+<h3>Задача 14</h3>
+
+<div class="task14" style="user-select: none"></div>
 
 <script>
+
     //Задача 9
-    // let a = document.getElementById('height').value;
-    // let b = document.getElementById('width').value;
-    // let c= document.getElementById('depth').value;
-    // let h= document.getElementById('heightHole').value;
-    // let w= document.getElementById('widthHole').value;
 
-    function doesBrickFit (a,b,c,h,w){
-        document.getElementById("values").innerHTML = a;
-    }
-    doesBrickFit(document.querySelectorAll('#height').value, document.querySelectorAll('#width').value,document.querySelectorAll('#depth').value, 
-    document.querySelectorAll('#heightHole').value,document.querySelectorAll('#widthHole').value);
+   document.querySelector('#btn9').addEventListener('click', (event) => {
+    event.preventDefault();
+    let a = document.querySelector('#height').value;
+    let b = document.querySelector('#width').value;
+    let c = document.querySelector('#depth').value;
+    let h = document.querySelector('#heightHole').value;
+    let w = document.querySelector('#widthHole').value;
+    document.querySelector('.valueA').innerHTML = a;
+    document.querySelector('.valueB').innerHTML = b;
+    document.querySelector('.valueC').innerHTML = c;
+    document.querySelector('.valueH').innerHTML = h;
+    document.querySelector('.valueW').innerHTML = w;
+    
+   let s1 = b * a;
+   let s2 = c * a;
+   let s3 = b * c;
+   let sH = w * h;
+   if(sH >= s1 || sH >= s2 || sH >= s3 ){
+    document.querySelector('.result').innerHTML = "true";
+   }else {document.querySelector('.result').innerHTML = "false"};
+   });
 
-   
+   // Задача 14
+
+   let str = '((()))';
+   const balanceParanthesis = str => {
+   let paren = [];
+   for (let i = 0; i < str.length; i++) {
+      if (str[i] === "(") {
+         paren.push(str[i]);
+      } else if (str[i] === ")") {
+         if (paren[paren.length - 1] === "("){
+            paren.pop();
+         }else {
+            paren.push("#");
+         };
+      };
+   }
+   if(paren.length == 0 ){
+    return document.querySelector('.task14').innerHTML = str;
+   }
+   else{
+    return document.querySelector('.task14').innerHTML = "No balance";
+   }
+   }
+   balanceParanthesis (str);
     
 </script>
 

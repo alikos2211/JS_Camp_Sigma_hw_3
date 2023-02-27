@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 15</title>
+</head>
+<body>
+
+    <div class="sentence"></div>
+    <div class="words"></div>
+    <div class="list">
+        <ul id="list">
+
+        </ul>
+    </div>
+
+<script>
+
+const list = document.querySelector('#list');
+const str = String(prompt('Enter sentence please:',));;
+document.querySelector('.sentence').innerHTML = str;
+let words = str.split(' ');
+document.querySelector('.words').innerHTML = words;
+
+words[0] = words[0].toUpperCase();
+words[words.length - 1] = words[words.length - 1].toLowerCase();
+words[words.length - 2] = words[words.length - 2].toLowerCase();
+
+for (let i = 0; i < words.length; i++){
+    let newElement = document.createElement('li');
+    newElement.innerText = words[i];
+    list.appendChild(newElement);
+}
+let ch = "а";
+let count = [...str].filter(x => x === ch).length;
+alert(count);
+
+let timer = setTimeout(() => {
+  if (confirm("Ви ще тут?")) {
+    timer = setTimeout(() => {
+      alert("Ви не відповіли на запитання і були автоматично відключені.");
+      window.close();
+    }, 300000); 
+  } else {
+    window.close();
+  }
+}, 300000);
+
+</script>
+</body>
+</html>
